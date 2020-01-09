@@ -1,0 +1,20 @@
+{
+  "Project": [
+    {
+      "id": "2",
+      "name": "Hotel Management",
+      "prefix": "hm",
+      "description": "Only use for hotel management",
+      "notify": "F",
+      "enableNotes": "F"
+    },
+    {
+      "id": "3",
+      "name": "Online Home Service",
+      "prefix": "hs",
+      "description": "Online Home Service provide",
+      "notify": "T",
+      "enableNotes": "T"
+    }
+  ]
+}

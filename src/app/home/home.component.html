@@ -1,0 +1,86 @@
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+<!------ Include the above in your HEAD tag ---------->
+
+
+<div class="container">
+    <div class="row">
+
+
+        <div class="col-md-12">
+            <h4>Project Detail</h4>
+            <div class="table-responsive">
+
+                <p data-placement="top" data-toggle="tooltip" title="Add"><button
+                    class="btn btn-danger btn-xs" (click)="add()" data-title="Add" data-toggle="modal"><span class="glyphicon glyphicon-plus">Add</span></button>
+                </p>
+                
+                <table class="table table-bordred table-striped">
+                    
+                    <thead>
+                        <th>Name</th>
+                        <th>Prefix</th>
+                        <th>Description</th>
+                        <th>Notify</th>
+                        <th>Enable Notes</th>
+                        <th>Edit</th>
+                        <th>Delete</th>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of allData">
+                            <td>{{item.name}}</td>
+                            <td>{{item.prefix}}</td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.notify}}</td>
+                            <td>{{item.enableNotes}}</td>
+                            <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Edit"><button (click)="updateDetail(item.id)"
+                                        class="btn btn-primary btn-xs" data-title="Edit" data-toggle="modal"><span class="glyphicon glyphicon-pencil"></span></button>
+                                </p>
+                            </td>
+                            <td>
+                                <p data-placement="top" data-toggle="tooltip" title="Delete"><button (click)="deleteData(item.id)"
+                                        class="btn btn-danger btn-xs" data-title="Delete" data-toggle="modal"><span class="glyphicon glyphicon-trash"></span></button>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <div class="clearfix"></div>
+                
+            </div>
+
+        </div>
+    </div>
+</div>
+<div *ngIf="updateData=='true'">
+<h3>Update Data </h3>
+    
+    <div>
+        <label for="Name">Name</label>
+        <input type="text"[(ngModel)]="name" placeholder="{{name}}">
+    
+        <label for="Prefix">Prefix</label>
+        <input type="text" [(ngModel)]="prefix" placeholder="{{prefix}}">
+    
+        <label for="Description">Description</label>
+        <input type="text" [(ngModel)]="description" placeholder="{{description}}">
+    
+        <label for="Notify">Notify</label>
+        <select [(ngModel)]="notify">
+          <option value="T">True</option>
+          <option value="F">False</option>
+        </select>
+    
+        <label for="Enable Notice">Enable Notice</label>
+        <select [(ngModel)]="enableNotes">
+          <option value="T">True</option>
+          <option value="F">False</option>
+        </select>
+      
+        <input type="submit" (click)="onSubmit()" value="Submit">
+    </div>
+</div>
+

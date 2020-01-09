@@ -1,0 +1,44 @@
+{
+  "Project": [
+    {
+      "id": 1,
+      "name": "ssccccc",
+      "prefix": "aaasss",
+      "description": "sss",
+      "notify": "F",
+      "enableNotes": "F"
+    },
+    {
+      "id": 2,
+      "name": "Hotel Management",
+      "prefix": "hm",
+      "description": "Only use for hotel management",
+      "notify": "F",
+      "enableNotes": "T"
+    },
+    {
+      "id": 3,
+      "name": "Online Home Service",
+      "prefix": "hs",
+      "description": "Online Home Service provide",
+      "notify": "T",
+      "enableNotes": "T"
+    },
+    {
+      "id": 4,
+      "name": "Car wash service",
+      "prefix": "cs",
+      "description": "Car wash service Provide",
+      "notify": "T",
+      "enableNotes": "T"
+    },
+    {
+      "id": 5,
+      "name": "Hospital Management",
+      "prefix": "dr",
+      "description": "Only use for school management",
+      "notify": "F",
+      "enableNotes": "F"
+    }
+  ]
+}
