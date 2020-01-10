@@ -13,17 +13,39 @@ export class ApiService {
   constructor(private http: HttpClient, private router: Router) {
     console.log(this.baseUrl);
   }
+
+  /**
+   * Get All Data
+   */
   getData(): Observable<IProject[]> {
     return this.http.get<IProject[]>(this.baseUrl);
   }
-  delete(id) {
+
+  searchData(id): Observable<IProject[]> {
+    return this.http.get<IProject[]>(`${this.baseUrl}?id=${id}`);
+  }
+  /**
+   * Delete Project Data
+   * @param id Projec ID
+   */
+  deleteData(id) {
     this.http.delete(this.baseUrl + id).subscribe();
   }
-  edit(id: number): Observable<IProject[]> {
-    return this.http.get<IProject[]>(this.baseUrl + id);
+
+  /**
+   * Edit Project Data
+   * @param id project ID
+   */
+  editData(id: number): Observable<IProject> {
+    return this.http.get<IProject>(this.baseUrl + id);
   }
 
-  update(id, add) {
+  /**
+   * For Update Project Data
+   * @param id Project Id
+   * @param add Data for update Project
+   */
+  updateData(id: number, add: object) {
     this.http.put(this.baseUrl + id, add).subscribe((data => {
       return this.router.navigate(['/']);
     }));

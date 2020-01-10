@@ -18,12 +18,14 @@ export class AddComponent implements OnInit {
     private api: ApiService,
     private httpClient: HttpClient,
     private router: Router
-  ) {
-    console.log('sucsess');
-  }
+  ) { }
 
   ngOnInit() {
   }
+
+  /**
+   * Submit Data for Add new project
+   */
   onSubmit() {
     this.boj = {
       name: this.name,
@@ -32,6 +34,9 @@ export class AddComponent implements OnInit {
       notify: this.notify,
       enableNotes: this.enableNotes
     }
+    /**
+     * Save Data
+     */
     this.httpClient.post(this.api.baseUrl, this.boj).subscribe((data => {
       console.log(data);
     }));

@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../api.service';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { IProject } from '../Project';
+import { switchMap } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-edit',
@@ -10,7 +13,7 @@ import { IProject } from '../Project';
   styleUrls: ['./edit.component.scss']
 })
 export class EditComponent implements OnInit {
-  allData: IProject[];
+  allData: IProject;
   obj: IProject;
   id: number = null;
   name: string = null;
@@ -21,17 +24,23 @@ export class EditComponent implements OnInit {
   constructor(
     private api: ApiService,
     private httpClient: HttpClient,
-    private router: Router
-  ) {
+    private router: Router,
+    private route: ActivatedRoute
+  ) { }
 
-    this.api.edit(this.id).subscribe((data => {
-      console.log(data);
+  /**
+   * Get Single Data from Project Data
+   */
+  ngOnInit() {
+    this.id = this.route.snapshot.params.id;
+    this.api.editData(this.id).subscribe((data => {
       this.allData = data;
     }));
-   }
-
-  ngOnInit() {
   }
+
+  /**
+   * Submit all Updated data
+   */
   onSubmit() {
     this.obj = {
       id: this.allData.id,
@@ -41,6 +50,9 @@ export class EditComponent implements OnInit {
       notify: this.allData.notify,
       enableNotes: this.allData.enableNotes
     };
-    this.api.update(this.id, this.obj);
+    /**
+     * Call Update Method from ApiService
+     */
+    this.api.updateData(this.id, this.obj);
   }
 }
